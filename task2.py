@@ -16,7 +16,7 @@ class Spanish21:
 
 	def __init__(self, players: List[Player]):
         	self.deck = pyCardDeck.Deck(
-	     	     cards=generate_deck()*6, #since 6 decks of cards are dealt in spanish 21
+	     	     cards=generate_deck()*6, #since 6 decks of cards are in spanish 21
             	     name='Spanish21 deck',
                      reshuffle=False))
         	self.players = players
@@ -58,38 +58,38 @@ class Spanish21:
 
 	def print_results(dealer_hand, player_hand):
 		clear()
-		print "The dealer has a " + str(dealer_hand) + " for a total of " + str(total(dealer_hand))
-		print "You have a " + str(player_hand) + " for a total of " + str(total(player_hand))
+		print("The dealer has a " + str(dealer_hand) + " for a total of " + str(total(dealer_hand)))
+		print("You have a " + str(player_hand) + " for a total of " + str(total(player_hand)))
 
 	def spanish21(dealer_hand, player_hand):
 		if total(player_hand) == 21:
 			print_results(dealer_hand, player_hand)
-			print "Congratulations! You got a Spanish21!\n"
+			print("Congratulations! You got a Spanish21!\n")
 			play_again()
 		elif total(dealer_hand) == 21:
 			print_results(dealer_hand, player_hand)		
-			print "Sorry, you lose. The dealer got a Spanish21.\n"
+			print("Sorry, you lose. The dealer got a Spanish21.\n")
 			play_again()
 
 	def score(dealer_hand, player_hand):
 		if total(player_hand) == 21:
 			print_results(dealer_hand, player_hand)
-			print "Congratulations! You got a Spanish21!\n"
+			print("Congratulations! You got a Spanish21!\n")
 		elif total(dealer_hand) == 21:
 			print_results(dealer_hand, player_hand)		
-			print "Sorry, you lose. The dealer got a Spanish21.\n"
+			print("Sorry, you lose. The dealer got a Spanish21.\n")
 		elif total(player_hand) > 21:
 			print_results(dealer_hand, player_hand)
-			print "Sorry. You busted. You lose.\n"
+			print("Sorry. You busted. You lose.\n")
 		elif total(dealer_hand) > 21:
 			print_results(dealer_hand, player_hand)			   
-			print "Dealer busts. You win!\n"
+			print("Dealer busts. You win!\n")
 		elif total(player_hand) < total(dealer_hand):
 			print_results(dealer_hand, player_hand)
-	   		print "Sorry. Your score isn't higher than the dealer. You lose.\n"
+	   		print("Sorry. Your score isn't higher than the dealer. You lose.\n")
 		elif total(player_hand) > total(dealer_hand):
 			print_results(dealer_hand, player_hand)			   
-			print "Congratulations. Your score is higher than the dealer. You win\n"
+			print("Congratulations. Your score is higher than the dealer. You win\n")
 
 	def game():
 		choice = 0
@@ -98,8 +98,8 @@ class Spanish21:
 		dealer_hand = deal(deck)
 		player_hand = deal(deck)
 		while choice != "q":
-			print "The dealer is showing a " + str(dealer_hand[0])
-			print "You have a " + str(player_hand) + " for a total of " + str(total(player_hand))
+			print("The dealer is showing a " + str(dealer_hand[0]))
+			print("You have a " + str(player_hand) + " for a total of " + str(total(player_hand)))
 			blackjack(dealer_hand, player_hand)
 			choice = raw_input("Do you want to [H]it, [S]tand, or [Q]uit: ").lower()
 			clear()
@@ -124,8 +124,8 @@ class Spanish21:
 	dealer_hand = deal(deck)
 	player_hand = deal(deck)
 	while choice != "q":
-		print "The dealer is showing a " + str(dealer_hand[0])
-		print "You have a " + str(player_hand) + " for a total of " + str(total(player_hand))
+		print("The dealer is showing a " + str(dealer_hand[0]))
+		print("You have a " + str(player_hand) + " for a total of " + str(total(player_hand)))
 		spanish21(dealer_hand, player_hand)
 		choice = raw_input("Do you want to [H]it, [S]tand, or [Q]uit: ").lower()
 		clear()
@@ -141,14 +141,12 @@ class Spanish21:
 			score(dealer_hand, player_hand)
 			play_again()
 		elif choice == "q":
-			print "Bye!"
+			print("Bye!")
 			exit()
 	def generate_deck() -> List[Spanish21]:
 	    """
-	    Function that generates the deck, instead of writing down 50 cards, we use iteration
+	    Function that generates the deck, we use iteration
 	    to generate the cards for use
-	    :return:    List with all 48 poker playing cards
-	    :rtype:     List[PokerCard]
 	    """
 	    suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
 	    ranks = {'A': 'Ace',
@@ -160,7 +158,6 @@ class Spanish21:
 	             '7': 'Seven',
 	             '8': 'Eight',
 	             '9': 'Nine',
-	             #'10': 'Ten', we don't include this 4 cards in spanish 21
 	             'J': 'Jack',
 	             'Q': 'Queen',
 	             'K': 'King'}
