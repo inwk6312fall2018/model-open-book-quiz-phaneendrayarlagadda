@@ -24,12 +24,12 @@ class PokerTable:
 
 def Cantrell_Draw(self):
         """
-        Basic Five card game structure
+        Five card game structure
         """
         print("Starting a round of Cantrell Draw")
         self.deck.shuffle()
         self.deal_cards(5)
-        #Imagine the first round of betting happened here after cards are drawn and visible to player
+        #Imagine first round of betting happened here after cards are drawn and visible to player
         self.draw1()
         self.fold() #players who folded the hands after initial cards were distributed
         self.remove()
@@ -41,6 +41,18 @@ def Cantrell_Draw(self):
         self.after_the_draw()
         # Imagine some more betting and winner decision here
         self.cleanup()
+
+def deal_cards(self, number: int):
+        """
+        Dealer will go through all available players and deal them x number of cards.
+        :param number:  How many cards to deal
+        :type number:   int
+        """
+        for _ in range(0, number):
+            for player in self.players:
+                card = self.deck.draw()
+                player.hand.append(card)
+                print("Dealt {} to player {}".format(card, player)
 
 def draw1(self,number):
         """
@@ -71,6 +83,17 @@ def remove(self, player_id):
 
 def reset(self):
         self._folder_ids = set(self._dead_player_ids)
+def cleanup(self):
+        """
+        Cleans up the table to gather all the cards back
+        """
+        for player in self.players:
+            for card in player.hand:
+                self.deck.discard(card)
+        for card in self.table_cards:
+            self.deck.discard(card)
+        self.deck.shuffle_back()
+        print("Cleanup done")
 
 
 def generate_deck() -> List[PokerCard]:
